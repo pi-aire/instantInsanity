@@ -1082,7 +1082,7 @@
 											"top": 807,
 											"width": 198,
 											"height": 13,
-											"text": "Main"
+											"text": "App"
 										},
 										{
 											"_type": "LabelView",
@@ -1857,7 +1857,7 @@
 											"top": 142,
 											"width": 110,
 											"height": 13,
-											"text": "+value: List<int>",
+											"text": "+value: Array<int>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2783,6 +2783,35 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAF046/wMF7gt84="
 							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAF05hc9x4wuiug=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 80,
+							"top": 128,
+							"width": 128,
+							"height": 83,
+							"text": "Numéro des faces:\n   |5|\n|1|2|3|4|\n   |6|"
+						},
+						{
+							"_type": "UMLNoteLinkView",
+							"_id": "AAAAAAF05hesN4yFD7k=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAF046ju9FowMSQ="
+							},
+							"tail": {
+								"$ref": "AAAAAAF05hc9x4wuiug="
+							},
+							"lineStyle": 1,
+							"points": "208:171;383:177"
 						}
 					]
 				},
@@ -3147,7 +3176,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Main",
+					"name": "App",
 					"ownedElements": [
 						{
 							"_type": "UMLDependency",
@@ -3223,7 +3252,7 @@
 								"$ref": "AAAAAAF046ju81out9c="
 							},
 							"name": "value",
-							"type": "List<int>"
+							"type": "Array<int>"
 						}
 					],
 					"operations": [
