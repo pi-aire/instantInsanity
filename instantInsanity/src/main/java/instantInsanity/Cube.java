@@ -18,7 +18,7 @@ public class Cube {
     public HashMap<Integer,Integer> colorfaces;
 
     // Liste des positions possibles que le cube peut prendre 
-    static private int[][] position = {
+    private int[][] position = {
         {1,2,3,4},{2,3,4,1},{3,4,1,2},{4,1,2,3},{1,4,3,2},{2,1,4,3},
         {3,2,1,4},{4,3,2,1},{1,5,3,6},{5,3,6,1},{3,6,1,5},{6,1,5,3},
         {1,6,3,5},{5,1,6,3},{3,5,1,6},{6,3,5,1},{2,5,4,6},{5,4,6,2},
@@ -33,10 +33,9 @@ public class Cube {
      */
     public Cube(int[] values){
         this.config = 0;
-        int i = 1;
-        for (int color: values){
-            this.colorfaces.put(i, color);
-            i++;
+        this.colorfaces = new HashMap<Integer,Integer>();
+        for (int i = 0; i < values.length; i++) {
+            this.colorfaces.put(i+1, values[i]);
         }
         this.generateColorC();
     }
@@ -89,11 +88,12 @@ public class Cube {
 
     /**
      * Retourne la couleur de la face demandée
+     * @param configu configuration du cube
      * @param face numéro de la face
      * @return
      */
-    public int getColor(int face){
-        return this.colorfaces.get(this.position[this.config][face]);
+    public int getColor(int configu, int face){
+        return this.colorfaces.get(this.position[configu][face]);
     }
 
     /**
@@ -132,4 +132,5 @@ public class Cube {
     public String toString() {
         return this.position[this.config].toString();
     }
+
 }

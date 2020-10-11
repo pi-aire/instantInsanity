@@ -20,11 +20,11 @@ public class Instance {
     
     /**
      * Création d'une instance avec une assignation des couleur sur chaque cube
-     * @param cubesAssination tableau contenant la liste des couleurs pour chaque cubes 
+     * @param cubesAssignation tableau contenant la liste des couleurs pour chaque cubes 
      */
-    public Instance(List<int[]> cubesAssination){
+    public Instance(List<int[]> cubesAssignation){
         this.cubes = new ArrayList<Cube>();
-        for (int[] cubeColor : cubesAssination) {
+        for (int[] cubeColor : cubesAssignation) {
             this.cubes.add(new Cube(cubeColor));
         }
         this.n = this.cubes.size();
