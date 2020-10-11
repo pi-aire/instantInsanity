@@ -85,7 +85,7 @@ public class Cube {
             this.colorC[i] = colorConfig;
         }
     }
-
+    
     /**
      * Retourne la couleur de la face demandée
      * @param configu configuration du cube
@@ -131,6 +131,13 @@ public class Cube {
     @Override
     public String toString() {
         return this.position[this.config].toString();
+    }
+    public String toString(int c) {
+        StringBuilder st = new StringBuilder();
+        for (int i = 0; i < 4; i++) {
+            st.append(""+ getColor(c, i));
+        }
+        return st.toString();
     }
 
 }

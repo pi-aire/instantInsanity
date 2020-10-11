@@ -19,11 +19,13 @@ public class App
         int[] c4 = {2,1,0,2,3,1};
         cubes.add(c4);
         Instance inst = new Instance(cubes);
-        Resolver resolve = new Resolver(inst);
-        int[] configs = resolve.start();
-        for (int i = 0; i < inst.n; ++i){
-            inst.cubes.get(i).rotation(configs[i]);
-            System.out.println(inst.cubes.get(i));
-        }
+        // Resolver resolve = new Resolver(inst);
+        Resolver_old resolve = new Resolver_old(inst);
+        resolve.start();
+        // int[] configs = resolve.start();
+        // for (int i = 0; i < inst.n; ++i){
+        //     inst.cubes.get(i).rotation(configs[i]);
+        //     System.out.println(inst.cubes.get(i));
+        // }
     }
 }
