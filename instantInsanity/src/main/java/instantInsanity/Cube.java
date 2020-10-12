@@ -46,6 +46,7 @@ public class Cube {
      */
     public Cube(int n){
         Random rand = new Random();
+        this.colorfaces = new HashMap<Integer,Integer>();
         for (int i = 1; i <= 6; ++i){
             // bound exclusive
             this.colorfaces.put(i,rand.nextInt(n));
@@ -132,10 +133,11 @@ public class Cube {
     public String toString() {
         return this.position[this.config].toString();
     }
-    public String toString(int c) {
+    
+    public String toString(int configuration) {
         StringBuilder st = new StringBuilder();
         for (int i = 0; i < 4; i++) {
-            st.append(""+ getColor(c, i));
+            st.append(""+ getColor(configuration, i));
         }
         return st.toString();
     }

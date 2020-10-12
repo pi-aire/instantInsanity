@@ -30,13 +30,13 @@ public class Resolver {
         Solver solver = model.getSolver();
         solver.solve();
         if (false){
-        //    System.out.println("allez je suis le boss")
-           // System.out.println(solution.toString());
-           int[] results = new int[this.instance.n];
-           // for (int i = 0; i < this.instance.n; i++) {
-               //     results[i] = solution.getIntVal(cubePs[i]);
-               // }
-               return results;
+            //    System.out.println("allez je suis le boss")
+            // System.out.println(solution.toString());
+            int[] results = new int[this.instance.n];
+            // for (int i = 0; i < this.instance.n; i++) {
+            //     results[i] = solution.getIntVal(cubePs[i]);
+            // }   
+            return results;
         }else{
             return null;
         }
