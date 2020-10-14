@@ -9,4 +9,4 @@ Le second modèle est définis dans la classe [Resolver_old.java](./instantInsan
 ## Problèmes rencontrés actuellement
 Avec le premier modèle, le solver ne fournie pas de solution du à notre propagator. Mais on n'a pas d'explication qui nous permet de résoudre le problème.
 
-Avec le second modèle, on a un seul passage dans les contraintes. Si les variable ne respect pas les contraintes choco retourne comme quoi il n'y a pas de solution. IL 
+Avec le second modèle, on a un seul passage dans les contraintes. Si les variable ne respect pas les contraintes choco retourne comme quoi il n'y a pas de solution.

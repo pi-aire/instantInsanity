@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import org.chocosolver.solver.Model;
 import org.chocosolver.solver.Solution;
-import org.chocosolver.solver.Solver;
 import org.chocosolver.solver.expression.discrete.arithmetic.ArExpression;
 import org.chocosolver.solver.variables.IntVar;
 
@@ -52,7 +51,7 @@ public class Resolver_old {
                 ArExpression expr = cubeCCs[i][0].mul(tmpc.getColor(0, f)); 
                 for (int j = 1; j < 24; j++) {
                     // System.out.println(tmpc.toString(j));
-                    expr.add(cubeCCs[i][j].mul(tmpc.getColor(j, f))); 
+                    expr = expr.add(cubeCCs[i][j].mul(tmpc.getColor(j, f))); 
                 }
                 expressions[f][i] = expr.intVar();
             }
