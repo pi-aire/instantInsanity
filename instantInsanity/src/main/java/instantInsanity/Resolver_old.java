@@ -63,11 +63,18 @@ public class Resolver_old {
             model.allDifferent(expressions[f]).post();
         }
         System.out.println(model.getNbCstrs());
-        Solution solution = model.getSolver().findSolution();
-        if (solution != null){
+        Solution solution = new Solution(model);
+        Solver solver = model.getSolver();
+        while (solver.solve()) {
+            solution.record();
+            
             System.out.println(solution.toString());
-        }else{
-            System.out.println("Pas de solution/bug");
         }
+
+        // Solution solution = model.getSolver().findSolution();
+        // if (solution != null){
+        // }else{
+        //     System.out.println("Pas de solution/bug");
+        // }
     }
 }

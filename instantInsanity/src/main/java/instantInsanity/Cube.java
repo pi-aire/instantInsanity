@@ -131,14 +131,22 @@ public class Cube {
 
     @Override
     public String toString() {
-        return this.position[this.config].toString();
+        StringBuilder st = new StringBuilder();
+        st.append("[");
+        for (int i = 0; i < 4; i++) {
+            st.append(","+ getColor(this.config, i));
+        }
+        st.append("]");
+        return st.toString();
     }
     
     public String toString(int configuration) {
         StringBuilder st = new StringBuilder();
+        st.append("[");
         for (int i = 0; i < 4; i++) {
             st.append(""+ getColor(configuration, i));
         }
+        st.append("]");
         return st.toString();
     }
 

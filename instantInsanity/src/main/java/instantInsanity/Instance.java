@@ -38,4 +38,12 @@ public class Instance {
         return cubes.get(indexCube);
     }
     
+    @Override
+    public String toString() {
+        StringBuilder tmp = new StringBuilder();
+        for (Cube cube : cubes) {
+            tmp.append(cube.toString());
+        }
+        return tmp.toString();
+    }
 }
