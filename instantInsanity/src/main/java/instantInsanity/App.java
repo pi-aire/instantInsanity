@@ -17,21 +17,22 @@ public class App
         cubes.add(c3);
         int[] c4 = {2,1,0,2,3,1};
         cubes.add(c4);
-        // int[] c1 = {0,0,0,1,0,0};
-        // // int[] c1 = {0,0,0,0,0,0};
-        // cubes.add(c1);
-        // // int[] c2 = {1,1,1,1,1,1};
-        // int[] c2 = {1,1,0,1,1,1};
-        // cubes.add(c2);
-        // int[] c3 = {2,2,2,2,2,2};
-        // cubes.add(c3);
-        // int[] c4 = {3,3,3,3,3,3};
-        // cubes.add(c4);
-        Instance inst = new Instance(cubes);
+        Instance inst = new Instance(42);
         System.out.println(inst);
         // Resolver resolve = new Resolver(inst);
         Resolver_old resolve = new Resolver_old(inst);
-        resolve.start();
+        List<Integer> config = resolve.start();
+        if (!config.isEmpty()){
+            for (Integer integer : config) {
+                System.out.print(integer+", ");
+            }
+            System.out.println();
+            for (int i = 0; i < inst.n; i++) {
+                System.out.print("Cube "+(i+1)+" : "+inst.cubes.get(i).toString(config.get(i))+", ");
+                
+            }
+
+        }
         // int[] configs = resolve.start();
         // for (int i = 0; i < inst.n; ++i){
         //     inst.cubes.get(i).rotation(configs[i]);

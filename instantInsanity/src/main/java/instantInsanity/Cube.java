@@ -144,7 +144,7 @@ public class Cube {
         StringBuilder st = new StringBuilder();
         st.append("[");
         for (int i = 0; i < 4; i++) {
-            st.append(""+ getColor(configuration, i));
+            st.append(""+ getColor(configuration, i)+", ");
         }
         st.append("]");
         return st.toString();

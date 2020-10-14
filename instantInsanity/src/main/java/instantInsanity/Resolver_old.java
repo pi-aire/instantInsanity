@@ -1,7 +1,9 @@
 package instantInsanity;
 
 import java.beans.Expression;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.chocosolver.solver.Model;
 import org.chocosolver.solver.Solution;
@@ -17,7 +19,7 @@ public class Resolver_old {
 
     }
 
-    public void start(){
+    public List<Integer> start(){
         Model model = new Model();
         // Création des variables
         // chaque variable représente une position d'un cube
@@ -64,9 +66,19 @@ public class Resolver_old {
         System.out.println(model.getNbCstrs());
         Solution solution = model.getSolver().findSolution();
         if (solution != null){
-            System.out.println(solution.toString());
+            List<Integer> configuration = new ArrayList<Integer>();
+            for (int i = 0; i < this.instance.n; i++) {
+                for (int j = 0; j < 24; j++) {
+                    if (solution.getIntVal(cubeCCs[i][j]) == 1){
+                        configuration.add(j);
+                        break;
+                    }
+                }
+            }
+            return configuration;
         }else{
             System.out.println("Pas de solution/bug");
+            return new ArrayList<>();
         }
     }
 }
