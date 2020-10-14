@@ -17,7 +17,7 @@ public class App
         cubes.add(c3);
         int[] c4 = {2,1,0,2,3,1};
         cubes.add(c4);
-        Instance inst = new Instance(42);
+        Instance inst = new Instance(10);
         System.out.println(inst);
         // Resolver resolve = new Resolver(inst);
         Resolver_old resolve = new Resolver_old(inst);
@@ -31,12 +31,34 @@ public class App
                 System.out.print("Cube "+(i+1)+" : "+inst.cubes.get(i).toString(config.get(i))+", ");
                 
             }
-
+            System.out.println();
+            // On regarde si la solution est juste
+            if (!verifyResult(inst, config)){
+                System.out.println("La solution est incorrect");
+            }else{
+                
+                System.out.println("La solution est correct");
+            }
+        }else{
+            System.out.println("Pas de solution");
         }
         // int[] configs = resolve.start();
         // for (int i = 0; i < inst.n; ++i){
         //     inst.cubes.get(i).rotation(configs[i]);
         //     System.out.println(inst.cubes.get(i));
         // }
+    }
+
+    public static boolean verifyResult(Instance inst, List<Integer> config){
+        for (int f = 0; f < 4; f++) {
+            for (int i = 0; i < inst.n; i++) {
+                for (int j = 0; j < inst.n; j++) {
+                    if (i != j && inst.cubes.get(i).getColor(config.get(i), f) == inst.cubes.get(j).getColor(config.get(j), f)){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 }
