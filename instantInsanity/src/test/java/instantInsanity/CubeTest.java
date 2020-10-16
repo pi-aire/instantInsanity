@@ -12,16 +12,13 @@ import instantInsanity.*;
 public class CubeTest 
 {
     /**
-     * 
+     * Test de la fonction getColor
      */
     @Test
-    public void getColorTest()
-    {
-        long start = System.currentTimeMillis();
+    public void getColorTest(){
         //Given
-        Instance moninst = new Instance(1);
-        Cube monCube = moninst.cubes.get(0);
-        System.out.println("Nombre de cube/couleur " + moninst.n);
+        Instance monInstance = new Instance(1);
+        Cube monCube = monInstance.cubes.get(0);
         //When
         int colorL = monCube.getColor(0,0);
         int colorF = monCube.getColor(0,1);
@@ -32,7 +29,5 @@ public class CubeTest
         assertEquals(colorL, colorF);
         assertEquals(colorF, colorR);
         assertEquals(colorR, colorB);
-        long time = System.currentTimeMillis() - start;
-
     }
 }
