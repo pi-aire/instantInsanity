@@ -45,8 +45,8 @@ public class Cube {
      * @param n nombre de couleurs
      */
     public Cube(int n){
-        //Random rand = new Random();
-        Random rand = new Random(22);
+        Random rand = new Random();
+        //Random rand = new Random(22);
         this.colorfaces = new HashMap<Integer,Integer>();
         for (int i = 1; i <= 6; ++i){
             // bound exclusive
