@@ -10,7 +10,7 @@ public class App
     {
         List<int[]> cubes = new ArrayList<>();
         
-        // 0 rouge, 1 jaune, 2 vert, 3 blue
+        // 0 red, 1 yellow, 2 green, 3 blue
         int[] c1 = {0,1,2,3,0,0};
         cubes.add(c1);
         int[] c2 = {0,1,3,2,0,1};
@@ -34,7 +34,7 @@ public class App
                 
             }
             System.out.println();
-            // On regarde si la solution est juste
+            // Is the solution right ?
             if (!verifyResult(inst, config)){
                 System.out.println("La solution est incorrect");
             }else{

@@ -4,15 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import instantInsanity.*;
-
 /**
  * Unit test for Cube.
  */
 public class CubeTest 
 {
     /**
-     * Test de la fonction getColor
+     * Test of getColor
      */
     @Test
     public void getColorTest(){
