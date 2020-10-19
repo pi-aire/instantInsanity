@@ -2,6 +2,8 @@ package instantInsanity;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.chocosolver.solver.ParallelPortfolio;
+
 public class App 
 {
     public static void main( String[] args )
@@ -47,6 +49,7 @@ public class App
         //     inst.cubes.get(i).rotation(configs[i]);
         //     System.out.println(inst.cubes.get(i));
         // }
+        // testMultiThread();
     }
 
     public static boolean verifyResult(Instance inst, List<Integer> config){
@@ -60,5 +63,19 @@ public class App
             }
         }
         return true;
+    }
+
+    public static void testMultiThread(){
+        Instance inst = new Instance(10);
+        System.out.println(inst);
+        // Resolver resolve = new Resolver(inst);
+        Resolver_old resolve = new Resolver_old(inst);
+        ParallelPortfolio portfolio = new ParallelPortfolio(false);
+        int nbModels = 12;
+        for(int s=0;s<nbModels;s++){
+            portfolio.addModel(resolve.makeModel());
+        }
+        portfolio.solve();
+
     }
 }
