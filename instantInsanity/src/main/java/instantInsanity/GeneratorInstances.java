@@ -13,7 +13,7 @@ public class GeneratorInstances {
         JSONArray list = new JSONArray();
         List<Instance> instances = new ArrayList<Instance>();
         for (int i = 2; i < 20; i++) {
-            for (int j = 0; j < 6; j++) {
+            for (int j = 0; j < 2; j++) {
                 instances.add(new Instance(i+1));
             }    
         }

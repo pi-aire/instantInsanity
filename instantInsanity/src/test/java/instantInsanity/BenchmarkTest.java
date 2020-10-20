@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.HashMap;
 
 import org.json.simple.JSONObject;
 import org.chocosolver.util.sort.ArraySort;
@@ -29,7 +30,7 @@ public class BenchmarkTest {
             Scanner myReader = new Scanner(myObj);
             StringBuilder strb = new StringBuilder();
             while (myReader.hasNextLine()) {
-              strb.append(myReader.nextLine());
+                strb.append(myReader.nextLine());
             }
             myReader.close();
             JSONParser parser = new JSONParser();
@@ -57,6 +58,7 @@ public class BenchmarkTest {
                 // for (List<int[]> instance : instances) {
                 //     System.out.println((new Instance(instance)).toJSON());
                 // }
+                executeBenchmark(instances);
                 
             } catch (Exception e) {
                 System.out.println("Impossible de lire le JSON");
@@ -64,5 +66,30 @@ public class BenchmarkTest {
         }catch (Exception e){
             System.out.println("Impossible de lire>ouvrire le fichier benchmark.json");
         }
+    }
+
+    public void executeBenchmark(List<List<int[]>> instances) {
+        int i = 0;
+        HashMap<Integer, Long> resultBenchmark = new HashMap<Integer, Long>();
+        for (List<int[]> instance : instances) {
+            //Given
+            Instance inst = new Instance(instance);
+
+            //Starting the stopwatch 
+            long start = System.currentTimeMillis();
+
+            //When
+            Resolver_old resolve = new Resolver_old(inst);
+            List<Integer> config = resolve.start();
+            
+            //Stop the stopwatch
+            long time = System.currentTimeMillis() - start;
+
+            //Then
+            resultBenchmark.put(i, time);
+
+            i++;
+        }
+        System.out.println(resultBenchmark.toString());
     }
 }
