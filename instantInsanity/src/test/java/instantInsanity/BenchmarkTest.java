@@ -36,16 +36,27 @@ public class BenchmarkTest {
             try {
                 Object obj = parser.parse(strb.toString());
                 JSONArray array = (JSONArray)obj;
-                List<List<Integer>> instances = new ArrayList<>(); 
+                System.out.println(((JSONArray) (array.get(0))).get(0));
+                List<List<int[]>> instances = new ArrayList<>(); 
                 for (Object instance : array) {
-                    List<Integer> ninstance = new ArrayList<>(); 
-                    for (int value : (int[]) instance) {
-                        ninstance.add(value);
+                    List<int[]> ninstance = new ArrayList<>(); 
+                    for (Object cube : (JSONArray) instance) {
+                        int[] values = new int[6];
+                        for (int i = 0; i < ((JSONArray) cube).size(); i++) {
+                            Long tmp = ((Long) ((JSONArray) cube).get(i));
+                            values[i] = tmp.intValue();
+                            // System.out.println(((JSONArray) cube).get(i).getClass());
+
+                        }
+                        ninstance.add(values);
                     }
                     instances.add(ninstance);
                 }
                 // TON CODE le mieux appèle une fonction avac en param la liste
                 // la variable est instances
+                // for (List<int[]> instance : instances) {
+                //     System.out.println((new Instance(instance)).toJSON());
+                // }
                 
             } catch (Exception e) {
                 System.out.println("Impossible de lire le JSON");
