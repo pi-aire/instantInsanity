@@ -18,7 +18,7 @@ public class Instance {
             }
         } while (!this.viableInstance());
         this.n = n;
-        System.out.println("L'instance générée est prète");
+        // System.out.println("L'instance générée est prète");
     }
     
     /**
