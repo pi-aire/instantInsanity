@@ -141,20 +141,31 @@ public class Resolver_old {
             return new ArrayList<>();
         }
     }
+    
     /**
-     * Mise en
-     * @return
+     * Cherche le cube qui a le moins de couleur sur ses faces visibles
+     * @return liste d'indice des cubes qui ont le moins de couleurs au total sur les faces 1
      */
-    public int distance(int n, IntVar value, IntVar[][] expressions){
-        int total = 0;
+    public List<Integer> lowerNbColor(int n, IntVar[][] expressions){
+        int total = Integer.MAX_VALUE;
+        List<Integer> cubesMin = new ArrayList<Integer>();
+
         for (int i = 0; i < n; i++) {
             Set<Integer> set = new HashSet<Integer>();
             for (int j = 0; j < 4; j++) {
-                set.add(expressions[j][i].getValue());
+                if (expressions[j][i].isInstantiated()){
+                    set.add(expressions[j][i].getValue());
+                }
             }
-            total += set.size();
+            if (set.size() < total){
+                total = set.size();
+                cubesMin.clear();
+                cubesMin.add(i);
+            }else if(set.size() == total){
+                cubesMin.add(i);
+            }
         }
-        return total;
+        return cubesMin;
     }
 
     /**
