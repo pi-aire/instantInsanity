@@ -75,54 +75,26 @@ public class Resolver_old {
             model.allDifferent(expressions[f]).post();
         }
         System.out.println(model.getNbCstrs());
-        // model.getSolver().setSearch(Search.bestBound(new AbstractStrategy<IntVar>(){
-        //     // enables to recycle decision objects (good practice)
-        //     PoolManager<IntDecision> pool = new PoolManager<IntDecision>();
-        //     @Override
-        //     public Decision<IntVar> getDecision(){
-                         
-        //     }
-        // }));
-        // model.getSolver().setSearch(new AbstractStrategy<IntVar>(cubeCCs[0][0]) {
-        //     // enables to recycle decision objects (good practice)
-        //     PoolManager<IntDecision> pool = new PoolManager();
-        //     @Override
-        //     public Decision getDecision() {
-        //         IntDecision d = pool.getE();
-        //         if(d==null) d = new IntDecision(pool);
-        //         IntVar next = null;
-        //         for(IntVar v:vars){
+        // model.getSolver().setSearch(Search.intVarSearch(
+        //     // variable selector
+        //     (VariableSelector<IntVar>) variables -> {
+        //         List<IntVar> list = new ArrayList<IntVar>();
+        //         for(IntVar v: variables){
         //             if(!v.isInstantiated()){
-        //                 next = v; break;
+        //                 list.add(v);
         //             }
         //         }
-        //         if(next == null){
-        //             return null;
-        //         }else {
-        //             // next decision is assigning nextVar to its lower bound
-        //             d.set(next,next.getLB(), DecisionOperatorFactory.makeIntEq());
-        //             return d;
-        //         }
-        //     }
-        // });
-        model.getSolver().setSearch(Search.intVarSearch(
-            // variable selector
-            (VariableSelector<IntVar>) variables -> {
-                List<IntVar> list = new ArrayList<IntVar>();
-                for(IntVar v: variables){
-                    if(!v.isInstantiated()){
-                        list.add(v);
-                    }
-                }
-                return list.stream().min((v1, v2) -> 
-                    distance(instance.n, v2, expressions) - distance(instance.n,v1, expressions)
-                )
-            },
-            // value selector
-            (IntValueSelector) var -> var.getLB()
-        ));
+        //         return list.stream().min((v1, v2) -> 
+        //             distance(instance.n, v2, expressions) - distance(instance.n,v1, expressions)
+        //         )
+        //     },
+        //     // value selector
+        //     (IntValueSelector) var -> var.getLB()
+        // ));
         
+        // Le timeOut est paramétré 
         model.getSolver().limitTime("10m");
+        // Démarrage de la résolution
         Solution solution = model.getSolver().findSolution();
         if (solution != null){
             model.getSolver().printStatistics();
@@ -141,7 +113,7 @@ public class Resolver_old {
             return new ArrayList<>();
         }
     }
-    
+
     /**
      * Cherche le cube qui a le moins de couleur sur ses faces visibles
      * @return liste d'indice des cubes qui ont le moins de couleurs au total sur les faces 1
