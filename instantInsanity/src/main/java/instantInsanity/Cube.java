@@ -27,6 +27,9 @@ public class Cube {
     // Combinaison de couleur possible
     public int[][] colorC;
 
+    // cube brute utilisé pour la création de json
+    public int[] raw;
+
     /**
      * Assignation des valeur fournie sur chaque face du cube
      * @param values listes des couleurs sur chaque face en respectant l'ordre donnée
@@ -37,6 +40,7 @@ public class Cube {
         for (int i = 0; i < values.length; i++) {
             this.colorfaces.put(i+1, values[i]);
         }
+        this.raw = values;
         this.generateColorC();
     }
 
@@ -46,11 +50,14 @@ public class Cube {
      */
     public Cube(int n){
         Random rand = new Random();
+        this.raw = new int[6];
         //Random rand = new Random(22);
         this.colorfaces = new HashMap<Integer,Integer>();
         for (int i = 1; i <= 6; ++i){
             // bound exclusive
-            this.colorfaces.put(i,rand.nextInt(n));
+            int randV = rand.nextInt(n);
+            this.colorfaces.put(i,randV);
+            this.raw[i-1] = randV;
         }
         this.generateColorC();
     }

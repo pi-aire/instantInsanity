@@ -72,4 +72,27 @@ public class Instance {
         }
         return tmp.toString();
     }
+    
+    public List<List<Integer>> toJSON() {
+        // StringBuilder tmp = new StringBuilder();
+        // for (Cube cube : cubes) {
+        //     tmp.append("[");
+        //     for (int i = 0; i < 6; i++) {
+        //         tmp.append(cube.raw[i]+",");
+        //     }
+        //     tmp.deleteCharAt(tmp.length()-1);
+        //     tmp.append("],");
+        // }
+        // tmp.deleteCharAt(tmp.length()-1);
+        // return tmp.toString();
+        List<List<Integer>> cubesRaws = new ArrayList<>();
+        for (Cube cube : cubes) {
+            List<Integer> raw = new ArrayList<>();
+            for (int f : cube.raw) {
+                raw.add(f);
+            }
+            cubesRaws.add(raw);
+        }
+        return cubesRaws;
+    }
 }
