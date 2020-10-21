@@ -1,6 +1,7 @@
 package instantInsanity;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.chocosolver.solver.ParallelPortfolio;
 
@@ -19,10 +20,10 @@ public class App
         cubes.add(c3);
         int[] c4 = {2,1,0,2,3,1};
         cubes.add(c4);
-        Instance inst = new Instance(cubes);
+        Instance inst = new Instance(4);
         System.out.println(inst);
         // Resolver resolve = new Resolver(inst);
-        Resolver_old resolve = new Resolver_old(inst);
+        New_Resolver resolve = new New_Resolver(inst);
         List<Integer> config = resolve.start();
         if (!config.isEmpty()){
             for (Integer integer : config) {
@@ -53,6 +54,7 @@ public class App
     }
 
     public static boolean verifyResult(Instance inst, List<Integer> config){
+        System.out.println(config +" "+ inst.n);
         for (int f = 0; f < 4; f++) {
             for (int i = 0; i < inst.n; i++) {
                 for (int j = 0; j < inst.n; j++) {
@@ -69,7 +71,7 @@ public class App
         Instance inst = new Instance(10);
         System.out.println(inst);
         // Resolver resolve = new Resolver(inst);
-        Resolver_old resolve = new Resolver_old(inst);
+        New_Resolver resolve = new New_Resolver(inst);
         ParallelPortfolio portfolio = new ParallelPortfolio(false);
         int nbModels = 12;
         for(int s=0;s<nbModels;s++){

@@ -12,12 +12,12 @@ public class GeneratorInstances {
     public static void main(String[] args) {
         JSONArray list = new JSONArray();
         List<Instance> instances = new ArrayList<Instance>();
-        for (int i = 2; i < 20; i++) {
-            for (int j = 0; j < 2; j++) {
-                instances.add(new Instance(i+1));
+        for (int i = 4; i < 7; i++) {
+            for (int j = 0; j < 15; j++) {
+                instances.add(new Instance(i));
             }    
         }
-        for (int i = 25; i < 100; i+=25) {
+        for (int i = 7; i < 10; i+=1) {
             instances.add(new Instance(i));
         }
         for (Instance instance : instances) {

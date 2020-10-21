@@ -1,21 +1,14 @@
 package instantInsanity;
 
-import static org.junit.Assert.assertFalse;
-
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.HashMap;
 
-import org.json.simple.JSONObject;
-import org.chocosolver.util.sort.ArraySort;
 import org.json.simple.JSONArray;
-import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
 /**
@@ -61,7 +54,8 @@ public class BenchmarkTest {
                 executeBenchmark(instances);
                 
             } catch (Exception e) {
-                System.out.println("Impossible de lire le JSON");
+                e.printStackTrace();
+                // System.out.println("Impossible de lire le JSON");
             }
         }catch (Exception e){
             System.out.println("Impossible de lire>ouvrire le fichier benchmark.json");
@@ -72,6 +66,7 @@ public class BenchmarkTest {
         int i = 0;
         HashMap<Integer, Long> resultBenchmark = new HashMap<Integer, Long>();
         for (List<int[]> instance : instances) {
+            System.out.println(instance.size());
             //Given
             Instance inst = new Instance(instance);
 
@@ -79,17 +74,23 @@ public class BenchmarkTest {
             long start = System.currentTimeMillis();
 
             //When
-            Resolver_old resolve = new Resolver_old(inst);
-            List<Integer> config = resolve.start();
+            New_Resolver resolve = new New_Resolver(inst);
+            List<Integer> config = resolve.start(true);
             
             //Stop the stopwatch
             long time = System.currentTimeMillis() - start;
+            
+            //Verification
+            if (!config.isEmpty() && App.verifyResult(inst, config)){
+                System.out.println("La configuration est correcte");
+            }
+            
 
             //Then
             resultBenchmark.put(i, time);
 
             i++;
+            System.out.println(resultBenchmark.toString());
         }
-        System.out.println(resultBenchmark.toString());
     }
 }

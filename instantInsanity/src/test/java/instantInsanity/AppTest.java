@@ -1,6 +1,6 @@
 package instantInsanity;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -27,11 +27,11 @@ public class AppTest
         Instance inst = new Instance(cubes); 
 
         //When
-        Resolver_old resolve = new Resolver_old(inst);
+        New_Resolver resolve = new New_Resolver(inst);
         List<Integer> config = resolve.start();
 
         //Then
-        assertFalse(config.isEmpty());
+        assertTrue(!config.isEmpty() && App.verifyResult(inst, config));
     }
 
     /*
@@ -51,12 +51,12 @@ public class AppTest
         Instance inst = new Instance(cubes); 
 
         //When
-        Resolver_old resolve = new Resolver_old(inst);
+        New_Resolver resolve = new New_Resolver(inst);
         List<Integer> config = resolve.start();
 
         //Then
         System.out.println(inst);
-        assertFalse(config.isEmpty());
+        assertTrue(!config.isEmpty() && App.verifyResult(inst, config));
     }
 
     /*
@@ -78,12 +78,12 @@ public class AppTest
         Instance inst = new Instance(cubes); 
 
         //When
-        Resolver_old resolve = new Resolver_old(inst);
+        New_Resolver resolve = new New_Resolver(inst);
         List<Integer> config = resolve.start();
 
         //Then
         System.out.println(inst);
-        assertFalse(config.isEmpty());
+        assertTrue(!config.isEmpty() && App.verifyResult(inst, config));
     }
 
     /*
@@ -107,12 +107,12 @@ public class AppTest
         Instance inst = new Instance(cubes); 
 
         //When
-        Resolver_old resolve = new Resolver_old(inst);
+        New_Resolver resolve = new New_Resolver(inst);
         List<Integer> config = resolve.start();
 
         //Then
         System.out.println(inst);
-        assertFalse(config.isEmpty());
+        assertTrue(!config.isEmpty() && App.verifyResult(inst, config));
     }
 
     /*
@@ -138,12 +138,12 @@ public class AppTest
         Instance inst = new Instance(cubes); 
 
         //When
-        Resolver_old resolve = new Resolver_old(inst);
+        New_Resolver resolve = new New_Resolver(inst);
         List<Integer> config = resolve.start();
 
         //Then
         System.out.println(inst);
-        assertFalse(config.isEmpty());
+        assertTrue(!config.isEmpty() && App.verifyResult(inst, config));
     }
 
     /*
@@ -171,12 +171,12 @@ public class AppTest
         Instance inst = new Instance(cubes); 
 
         //When
-        Resolver_old resolve = new Resolver_old(inst);
+        New_Resolver resolve = new New_Resolver(inst);
         List<Integer> config = resolve.start();
 
         //Then
         System.out.println(inst);
-        assertFalse(config.isEmpty());
+        assertTrue(!config.isEmpty() && App.verifyResult(inst, config));
     }
 
     /*
@@ -206,12 +206,12 @@ public class AppTest
         Instance inst = new Instance(cubes); 
 
         //When
-        Resolver_old resolve = new Resolver_old(inst);
+        New_Resolver resolve = new New_Resolver(inst);
         List<Integer> config = resolve.start();
 
         //Then
         System.out.println(inst);
-        assertFalse(config.isEmpty());
+        assertTrue(!config.isEmpty() && App.verifyResult(inst, config));
     }
 
     /*
@@ -243,12 +243,12 @@ public class AppTest
         Instance inst = new Instance(cubes); 
 
         //When
-        Resolver_old resolve = new Resolver_old(inst);
+        New_Resolver resolve = new New_Resolver(inst);
         List<Integer> config = resolve.start();
 
         //Then
         System.out.println(inst);
-        assertFalse(config.isEmpty());
+        assertTrue(!config.isEmpty() && App.verifyResult(inst, config));
     }
 
     /*
@@ -284,11 +284,11 @@ public class AppTest
         Instance inst = new Instance(cubes); 
 
         //When
-        Resolver_old resolve = new Resolver_old(inst);
+        New_Resolver resolve = new New_Resolver(inst);
         List<Integer> config = resolve.start();
 
         //Then
         System.out.println(inst);
-        assertFalse(config.isEmpty());
+        assertTrue(!config.isEmpty() && App.verifyResult(inst, config));
     }
 }
